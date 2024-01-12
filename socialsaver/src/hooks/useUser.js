@@ -25,7 +25,7 @@ const useUser = () => {
                 });
             });
         }
-        console.log(user);
+
     };
 
     // Function to log out user

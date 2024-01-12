@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { UserProvider, useUserContext } from './context/User';
 import AuthenticationHandler from './util/AuthenticationHandler';
 import LaunchPage from './pages/LaunchPage';

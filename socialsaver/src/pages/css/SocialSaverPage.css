@@ -1,0 +1,93 @@
+.background-container {
+    position: relative;
+    background-color: #1a202cb0;
+    color: white;
+    padding: 20px 4px;
+    height: 100vh; /* Set the height to full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+.content-container {
+    position: relative;
+    max-width: 50vw;
+    text-align: center;
+}
+.intro-text {
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    padding-bottom: 8px;
+    display: inline-block;
+    position: relative;
+}
+
+.intro-text::after {
+    content: '';
+    position: absolute;
+    left: -20px; /* Extend to the left */
+    right: -20px; /* Extend to the right */
+    bottom: 0;
+    height: 2px; /* Height of the border */
+    background-color: white; /* Color of the border */
+}
+.main-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+.description {
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+    text-align: justify;
+}
+
+.button-group button {
+    margin-right: 8px;
+    padding: 12px 30px; /* Increased padding for longer buttons */
+    border-radius: 20px; /* Larger border-radius for pill shape */
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    font-size: 1rem; /* Optional: Adjust font size if needed */
+}
+
+.primary-button {
+    background-color: #ECC94B;
+    color: black;
+}
+
+.primary-button:hover {
+    background-color: #D69E2E;
+}
+
+.secondary-button {
+    background-color: transparent;
+    border: 2px solid #ECC94B;
+    color: #ECC94B;
+}
+
+.secondary-button:hover {
+    border-color: #D69E2E;
+    color: #D69E2E;
+}
+
+.background-image {
+    position: fixed; /* Change to 'fixed' to cover the whole screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
