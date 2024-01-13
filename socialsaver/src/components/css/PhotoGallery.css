@@ -1,0 +1,24 @@
+.gallery-container {
+    border: 1px solid #ccc; 
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    width: 100%; 
+    height: auto;
+    min-height: 80vh; 
+    max-height: 90vh;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+    border-radius: 8px; 
+    margin: 20px auto; 
+    overflow-y: auto; 
+    position: relative; 
+}
+
+/* Styles for Firefox */
+.gallery-container {
+    scrollbar-width: thin; 
+    scrollbar-color: rgba(255, 255, 255, 0.76) transparent; 
+}
+
+.gallery-selected-icon {
+    color: green; /* color for selected images */
+}

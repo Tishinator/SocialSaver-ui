@@ -35,7 +35,7 @@ const useUser = () => {
         });
     };
 
-    return { user, handleLoginSuccess, logout };
+    return { user, setUser, handleLoginSuccess, logout };
 };
 
 export default useUser;

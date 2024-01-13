@@ -1,0 +1,47 @@
+/* Cart.css */
+
+.cart-container {
+    padding: 20px;
+    background-color: #4e4e4e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-image {
+    max-width: 50px;
+    max-height: 50px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.remove-item-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #dc3545; /* Bootstrap danger color */
+}
+
+.clear-cart-btn-container {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.clear-cart-btn-container button {
+    /* background-color: #ffc107;  */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}

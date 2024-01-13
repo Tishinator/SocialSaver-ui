@@ -8,6 +8,7 @@ const AuthenticationHandler = () => {
     useEffect(() => {
         if (window.FB) {
             window.FB.getLoginStatus(function(response) {
+                console.log(response)
                 if (response.status === 'connected') {
                     handleLoginSuccess(response);
                 }

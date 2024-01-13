@@ -10,9 +10,11 @@ const SignInController = () => {
     const statusChangeCallback = (response) => {
         if (response.status === 'connected') {
             // User is logged in and authenticated
+            console.log("logged in")
             setIsLoggedIn(true);
             handleLoginSuccess(response)
         } else {
+            console.log("Not logged in")
             // User is not logged in
             setIsLoggedIn(false);
         }

@@ -1,29 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { useUserContext } from "../context/User";
-import Button from 'react-bootstrap/Button';
-import backgroundImage from '../assets/mountain.jpg';
 import './css/SocialSaverPage.css'
-import pageText from '../data/welcome.json'
+import Carousel from "react-bootstrap/Carousel";
+import Welcome from "../components/Welcome";
+import PhotoSelector from "../components/PhotoSelector";
+
 
 function SocialSaver() {
     const {user} = useUserContext();
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedIndex) => {
+        setIndex(selectedIndex);
+    }
+
+    const goNext = () => {
+        setIndex((prevIndex) => prevIndex === 0 ? 1 : 0);
+    }
+
     return (
-        <div className="background-container" style={{ fontFamily: 'sans-serif' }}>
-            <div className="overlay"></div>
-            <div className="content-container">
-                <p className="intro-text">Hello {user.name}!</p>
-                <h1 className="main-heading">{pageText.welcome}</h1>
-                <p className="description">{pageText.description} </p>
-                <div className="button-group">
-                    <Button className="primary-button">Get Started</Button>
-                </div>
-            </div>
-            <img
-                className="background-image"
-                src={backgroundImage}
-                alt="Your awesome business idea background image"
-            />
-        </div>
+        <Carousel activeIndex={index} onSelect={handleSelect} interval={null} controls={false} indicators={false} >
+            <Carousel.Item>
+                <Welcome carouselControl={goNext}/>
+            </Carousel.Item>
+            <Carousel.Item>
+                <PhotoSelector />
+            </Carousel.Item>
+        </Carousel>
     );
 };
 

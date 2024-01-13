@@ -1,0 +1,39 @@
+.photo-group-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.photo-options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.photo-option {
+    background-color: #000000; /* Dark gray color */
+    opacity: 0.8;
+    border-radius: 15px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.photo-option:hover{
+    background-color: #1d1c1c;
+}
+
+.icon-size {
+    font-size: 24px; /* 3xl size */
+    margin-bottom: 0; /* Reset bottom margin */
+}
+
+.option-title {
+    font-size: 18px; /* Large text size */
+    margin-top: 4px;
+    margin-bottom: 0; /* Reset bottom margin */
+}

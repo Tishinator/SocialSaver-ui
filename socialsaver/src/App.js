@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { UserProvider, useUserContext } from './context/User';
 import AuthenticationHandler from './util/AuthenticationHandler';
 import LaunchPage from './pages/LaunchPage';
+import backgroundImage from './assets/pexels-johannes-plenio-1103970.jpg';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           
         window.FB.AppEvents.logPageView();   
         initializeFB(true);
+        console.log("Initialized FB SDK!")
       };
       
         
@@ -39,10 +41,17 @@ function App() {
   return (
     <UserProvider>
         {isFBInitialized && <AuthenticationHandler />}
-        <div className="App">
-          <LaunchPage />
+        <div className="background-container" style={{ fontFamily: 'sans-serif' }}>
+            <div className="overlay"></div>
+            <div className="App">
+                <LaunchPage />
+            </div>
+            <img
+                className="background-image"
+                src={backgroundImage}
+                alt=""
+            />
         </div>
-      
     </UserProvider>
   );
 }
