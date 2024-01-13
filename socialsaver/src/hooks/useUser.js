@@ -14,11 +14,9 @@ const useUser = () => {
        
         
         if (response.status === 'connected') {
-            window.FB.api('/me', { fields: 'name,email,picture' }, function(userInfo) {
+            window.FB.api('/me', { fields: 'name' }, function(userInfo) {
                 updateUser({
                     name: userInfo.name,
-                    email: userInfo.email,
-                    picture: userInfo.picture.data.url,
                     accessToken: response.authResponse.accessToken, // Store access token
                     userID: response.authResponse.userID,
                     expiresIn: response.authResponse.expiresIn

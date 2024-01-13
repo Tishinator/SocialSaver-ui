@@ -9,6 +9,7 @@ import "./css/PhotoSelector.css"
 function PhotoSelector() {
     const [cartItems, setCartItems] = useState([]);
     const [showCart, setShowCart] = useState(false);
+    const [shownImages, setShownImages] = useState([]);
     const [taggedPhotos, setTaggedPhotos] = useState([]);
     const [yourPhotos, setYourPhotos] = useState([]);
 
@@ -28,30 +29,16 @@ function PhotoSelector() {
     const handleCartShow = () => setShowCart(true);
     const handleCartClose = () => setShowCart(false);
 
-    const images = [
-        // {
-        //    src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
-        //    width: 320,
-        //    height: 174,
-        //    isSelected: true,
-        //    caption: "After Rain (Jeshu John - designerspics.com)",
-        // },
-        // {
-        //    src: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
-        //    width: 320,
-        //    height: 212,
-        //    tags: [
-        //       { value: "Ocean", title: "Ocean" },
-        //       { value: "People", title: "People" },
-        //    ],
-        //    alt: "Boats (Jeshu John - designerspics.com)",
-        // },
-        // {
-        //    src: "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_b.jpg",
-        //    width: 320,
-        //    height: 212,
-        // },
-     ];
+    const handleTaggedPhotos = (images) => {
+        setShownImages(images)
+        setTaggedPhotos(images)
+    }
+
+    const handleYourPhotos = (images) => {
+        setShownImages(images)
+        setYourPhotos(images)
+    }
+
 
 
     return (
@@ -63,10 +50,15 @@ function PhotoSelector() {
                 }
             </button>
 
-            <PhotoFilterOptions />
+            <PhotoFilterOptions
+                taggedPhotos={taggedPhotos}
+                yourPhotos={yourPhotos} 
+                handleTaggedPhotos={handleTaggedPhotos}
+                handleYourPhotos={handleYourPhotos}
+            />
             <div className="gallery">
                 <PhotoGallery 
-                    imagesProp={images}
+                    imagesProp={shownImages}
                     cartItems={cartItems}
                     addToCart={addToCart}
                     removeFromCart={removeFromCart}
