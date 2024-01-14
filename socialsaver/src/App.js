@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { UserProvider, useUserContext } from './context/User';
+import { UserProvider } from './context/User';
 import AuthenticationHandler from './util/AuthenticationHandler';
-import LaunchPage from './pages/LaunchPage';
+import Welcome from './components/Welcome';
 import backgroundImage from './assets/pexels-johannes-plenio-1103970.jpg';
 
 
@@ -42,10 +42,11 @@ function App() {
     <UserProvider>
         {isFBInitialized && <AuthenticationHandler />}
         <div className="background-container" style={{ fontFamily: 'sans-serif' }}>
-            <div className="overlay"></div>
+            
             <div className="App">
-                <LaunchPage />
+                <Welcome />
             </div>
+            <div className="overlay"></div>
             <img
                 className="background-image"
                 src={backgroundImage}

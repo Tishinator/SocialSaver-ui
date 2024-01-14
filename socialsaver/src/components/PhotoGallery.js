@@ -5,6 +5,7 @@ import "./css/PhotoGallery.css"
 function PhotoGallery({ imagesProp, cartItems, addToCart, removeFromCart }) {
     // Using a state to manage and reflect the selection status of images
     const [images, setImages] = useState([]);
+    const hasSelected = images.some((image) => image.isSelected);
 
     useEffect(() => {
         // Initialize images with the isSelected property
@@ -27,14 +28,35 @@ function PhotoGallery({ imagesProp, cartItems, addToCart, removeFromCart }) {
         }
     };
 
+
+    const handleSelectAllClick = () => {
+        const nextImages = images.map((image) => ({
+            ...image,
+            isSelected: !hasSelected,
+        }));
+        setImages(nextImages);
+        nextImages.forEach((image)=> {
+            if (image.isSelected){
+                addToCart(image);
+            }else{
+                removeFromCart(image.src);
+            }
+        })
+    };
+
     return (
-        <div className="gallery-container">
-            <Gallery
-                images={images}
-                onSelect={onImageSelect}
-                onClick={onImageSelect}
-                enableImageSelection={true}
-            />
+        <div>
+            <button onClick={handleSelectAllClick}>
+                {hasSelected ? "Clear selection" : "Select all"}
+            </button>
+            <div className="gallery-container">
+                <Gallery
+                    images={images}
+                    onSelect={onImageSelect}
+                    onClick={onImageSelect}
+                    enableImageSelection={true}
+                />
+            </div>
         </div>
     );
 }

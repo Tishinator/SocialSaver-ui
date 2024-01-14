@@ -1,44 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import useUser from '../hooks/useUser';
+import "./css/SignInController.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 
 const SignInController = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const { user, handleLoginSuccess } = useUser();
+    const { handleLoginSuccess } = useUser();
     
     // Handle status change
     const statusChangeCallback = (response) => {
-        if (response.status === 'connected') {
-            // User is logged in and authenticated
-            console.log("logged in")
+            console.log("STATUS CALLBACK")
+            console.log(response);
             setIsLoggedIn(true);
             handleLoginSuccess(response)
-        } else {
-            console.log("Not logged in")
-            // User is not logged in
-            setIsLoggedIn(false);
-        }
     };
 
     const handleLogin = () => {
-        
+        if (!window.FB) {
+            console.error("Facebook SDK not initialized.");
+            return;
+        }
         window.FB.login(function(response) {
-            statusChangeCallback(response);
-        }, { scope: 'public_profile,email' });
+            if (response.authResponse) {
+                console.log('Welcome! Fetching your information.... ');
+                window.FB.api('/me', function(response) {
+                    console.log('Good to see you, ' + response.name + '.');
+                    statusChangeCallback(response);
+                });
+            } else {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        }, {scope: 'public_profile, user_photos', return_scopes: true});
         
 
     };
 
     return (
-        <div>
-            {isLoggedIn ? (
-                <div>Welcome to the app!</div>
-            ) : (
-                <div>
-                    <h1>Welcome to Social Saver</h1>
-                    <button onClick={handleLogin}>Login with Facebook</button>
-                </div>
-            )}
+        <div> 
+            <button className="fb-login-button" onClick={handleLogin}>
+                <FontAwesomeIcon icon={faFacebook} /> Login with Facebook
+            </button>
         </div>
     );
 };

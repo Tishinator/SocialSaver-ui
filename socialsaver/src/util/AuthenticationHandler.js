@@ -1,5 +1,5 @@
 // AuthenticationHandler.js
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useUserContext } from '../context/User';
 
 const AuthenticationHandler = () => {
@@ -11,13 +11,12 @@ const AuthenticationHandler = () => {
                 console.log(response)
                 if (response.status === 'connected') {
                     handleLoginSuccess(response);
-                }
-                 else {
-                    setUser(null); // or handle the not-logged-in scenario
+                }else{
+                    setUser(null);
                 }
             });
         }
-    }, []);
+    }, [window.FB]);
 
     return null; // This component does not render anything
 };
