@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# SocialSaver-ui
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+SocialSaver-ui is a React-based web application designed to provide an intuitive interface for managing photos via Facebook's API. This application offers seamless integration with Facebook, allowing users to view, filter, and download photos directly from their Facebook albums.
 
-## Available Scripts
+## Features
+- **Facebook Integration**: Authenticate and interact with your Facebook account to access your photos.
+- **Photo Gallery**: View your Facebook photos in a beautifully designed gallery.
+- **Photo Management**: Select and filter photos based on different criteria such as tagged photos, your photos, and album photos.
+- **Download Functionality**: Easily select and download photos directly to your device.
+- **Responsive Design**: Enjoy a fully responsive layout that ensures a seamless experience across various devices.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+### Prerequisites
+- Node.js
+- npm (Node Package Manager)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Installation
+1. Clone the repository:
+   ```
+   git clone https://github.com/Tishinator/SocialSaver-ui.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd SocialSaver-ui
+   ```
+3. Install the dependencies:
+   ```
+   npm install
+   ```
+4. Start the application:
+   ```
+   npm start
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
+After starting the application, you will be prompted to log in with your Facebook account to access and manage your photos.
 
-### `npm test`
+## Contributing
+Contributions to SocialSaver-ui are welcome! Please read our [contributing guidelines](CONTRIBUTING.md) for more information.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## License
+This project is licensed under the [MIT License](LICENSE.md).
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Acknowledgments
+- [Create React App](https://github.com/facebook/create-react-app) for bootstrapping the project.
+- [React Bootstrap](https://react-bootstrap.github.io/) for responsive design components.
+- [Font Awesome](https://fontawesome.com/) for the icons used in the UI.
