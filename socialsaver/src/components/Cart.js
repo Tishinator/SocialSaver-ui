@@ -6,7 +6,7 @@ import './css/Cart.css'
 
 const Cart = ({ items, removeFromCart, clearCart, show, handleClose }) => {
     return (
-        <Offcanvas show={show} onHide={handleClose} placement="end" >
+        <Offcanvas show={show} onHide={handleClose} placement="end" className="cart-container" >
             <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Photos to Download</Offcanvas.Title>
                 

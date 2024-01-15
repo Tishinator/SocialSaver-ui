@@ -1,14 +1,12 @@
 /* Assuming this is in a file like CartButton.css */
 
-.cart-icon-button {
-    background: none;
-    color:aliceblue;
-    border: none;
+.cart-button {
     cursor: pointer;
-    position: relative;
+    position: fixed;
     margin-top:10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+    left: 83vw;
+    top: 6vh;
 }
 
 .cart-item-count {
@@ -24,11 +22,20 @@
     font-weight: bold;
 }
 
-.cart-icon-button:hover{
+.cart-button:hover{
         color: rgb(55, 137, 231);
 }
 
 .gallery {
     width: 80vw;
     min-height: 60vh;
+}
+
+.load-button {
+    cursor: pointer;
+    position: fixed;
+    margin-top:10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    left: 12vw;
+    top: 6vh;
 }

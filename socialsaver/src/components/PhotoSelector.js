@@ -4,45 +4,58 @@ import Cart from "./Cart";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { ProgressBar } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 import FacebookPhotoHelper from "../util/FacebookPhotoHelper";
 import "./css/PhotoSelector.css"
+
 
 function PhotoSelector() {
     const [cartItems, setCartItems] = useState([]);
     const [showCart, setShowCart] = useState(false);
     const [shownImages, setShownImages] = useState([]);
+    const [showLoading, setShowLoading] = useState(false);
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [loadingStep, setLoadingStep] = useState("");
-    const [loadingStatus, setLoadingStatus] = useState("success")
+    const [loadingStatus, setLoadingStatus] = useState("success");
+    const [showLoadButton, setShowLoadButton] = useState(true);
+    const [showCartButton, setShowCartButton] = useState(true);
+
+    
+    async function loadPhotos() {
+            setShowLoadButton(false);
+            setShowCartButton(false);
+            setShowLoading(true);
+            try {
+                setLoadingProgress(10)
+                setLoadingStep("Loading Album Photos");
+                const album = await FacebookPhotoHelper.getAlbumPhotos();
+                setLoadingProgress(33);
+
+                setLoadingStep("Loading Your Photos");
+                const uploaded = await FacebookPhotoHelper.getYourPhotos();
+                setLoadingProgress(66);
+
+                setLoadingStep("Loading Tagged Photos");
+                const tagged = await FacebookPhotoHelper.getTagged();
+                setLoadingProgress(100);
+
+                const combinedImages = [...new Set([...tagged, ...uploaded, ...album].map(JSON.stringify))].map(JSON.parse);
+                setShownImages(combinedImages);
+                setShowLoading(false)
+                setShowCartButton(true);
 
 
-    useEffect(() => {
-        async function loadPhotos() {
-                try {
-                    setLoadingStep("Loading Album Photos");
-                    const album = await FacebookPhotoHelper.getAlbumPhotos();
-                    setLoadingProgress(33);
-
-                    setLoadingStep("Loading Your Photos");
-                    const uploaded = await FacebookPhotoHelper.getYourPhotos();
-                    setLoadingProgress(66);
-
-                    setLoadingStep("Loading Tagged Photos");
-                    const tagged = await FacebookPhotoHelper.getTagged();
-                    setLoadingProgress(100);
-
-                    const combinedImages = [...new Set([...tagged, ...uploaded, ...album].map(JSON.stringify))].map(JSON.parse);
-                    setShownImages(combinedImages);
-
-                } catch (error) {
-                    setLoadingStep('ERROR LOADING PHOTOS');
-                    setLoadingStatus("danger");
-                    setLoadingProgress(99);
-                    // Handle error (e.g., show an error message to the user)
-                }            
-        }
-        loadPhotos();
-    }, []);
+            } catch (error) {
+                setLoadingStep('ERROR LOADING PHOTOS');
+                setLoadingStatus("danger");
+                setLoadingProgress(99);
+                setShowLoading(false)
+                setShowCartButton(true);
+                
+                // Handle error (e.g., show an error message to the user)
+            }            
+    }
+       
 
 
     const addToCart = (image) => {
@@ -65,15 +78,20 @@ function PhotoSelector() {
 
     return (
         <div>
-            <button onClick={handleCartShow} className="cart-icon-button">
-                <FontAwesomeIcon icon={faImage} size="2x" /> {/* Increased size */}
+            {showLoadButton ? <Button onClick={loadPhotos} variant='warning' className="load-button">Load Images</Button> : <div></div>}
+            {showCartButton ?
+            <Button onClick={handleCartShow} variant="success" className="cart-button">
+                {/* <FontAwesomeIcon icon={faImage} size="2x" />  */}
+                Download
                 {cartItems.length > 0 && 
-                    <span className="cart-item-count">{cartItems.length}</span>
+                    <span > ({cartItems.length})</span>
                 }
-            </button>
+            </Button> 
+            :
+            <div></div>}
 
             <div className="gallery">
-                {loadingProgress < 100 ? (
+                {((showLoading)&&(loadingProgress < 100)) ? (
                     <div>
                         <h4>{loadingStep}</h4>
                         <ProgressBar now={loadingProgress} animated variant={loadingStatus}/>

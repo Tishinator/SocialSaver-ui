@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: 100vw;
 }
 
 .App-logo {
@@ -42,7 +43,7 @@
   position: relative;
   background-color: #1a202cb0;
   color: white;
-  padding: 20px 4px;
+  /* padding: 20px 4px; */
   height: 100vh;
   display: flex;
   align-items: center;
@@ -67,9 +68,4 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
-}
-
-/* Keep your existing App styles */
-.App {
-text-align: center;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Gallery } from "react-grid-gallery";
+import { Button } from "react-bootstrap";
 import "./css/PhotoGallery.css"
 
 function PhotoGallery({ imagesProp, cartItems, addToCart, removeFromCart }) {
@@ -46,9 +47,9 @@ function PhotoGallery({ imagesProp, cartItems, addToCart, removeFromCart }) {
 
     return (
         <div>
-            <button onClick={handleSelectAllClick}>
+            <Button onClick={handleSelectAllClick} className="gallery-button" variant="primary">
                 {hasSelected ? "Clear selection" : "Select all"}
-            </button>
+            </Button>
             <div className="gallery-container">
                 <Gallery
                     images={images}

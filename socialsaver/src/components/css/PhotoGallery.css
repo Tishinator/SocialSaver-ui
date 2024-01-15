@@ -10,6 +10,7 @@
     border-radius: 8px; 
     margin: 20px auto; 
     overflow-y: auto; 
+    margin-top: 50px;
     position: relative; 
 }
 
@@ -21,4 +22,13 @@
 
 .gallery-selected-icon {
     color: green; /* color for selected images */
+}
+
+.gallery-button {
+    cursor: pointer;
+    position: fixed;
+    margin-top:10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    left: 76vw;
+    top: 6vh;
 }

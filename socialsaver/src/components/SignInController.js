@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import useUser from '../hooks/useUser';
+import { useUserContext } from '../context/User';
 import "./css/SignInController.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 
-const SignInController = () => {
+const SignInController = ({login}) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const { handleLoginSuccess } = useUser();
+    const { setUser, handleLoginSuccess } = useUserContext();
     
     // Handle status change
     const statusChangeCallback = (response) => {
@@ -15,6 +15,7 @@ const SignInController = () => {
             console.log(response);
             setIsLoggedIn(true);
             handleLoginSuccess(response)
+            login()
     };
 
     const handleLogin = () => {
@@ -24,11 +25,7 @@ const SignInController = () => {
         }
         window.FB.login(function(response) {
             if (response.authResponse) {
-                console.log('Welcome! Fetching your information.... ');
-                window.FB.api('/me', function(response) {
-                    console.log('Good to see you, ' + response.name + '.');
-                    statusChangeCallback(response);
-                });
+                statusChangeCallback(response)
             } else {
                 console.log('User cancelled login or did not fully authorize.');
             }

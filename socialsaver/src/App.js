@@ -3,8 +3,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { UserProvider } from './context/User';
 import AuthenticationHandler from './util/AuthenticationHandler';
-import Welcome from './components/Welcome';
+// import Welcome from './components/Welcome';
 import backgroundImage from './assets/pexels-johannes-plenio-1103970.jpg';
+import SocialSaver from './pages/SocialSaverPage';
+import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom';
+
 
 
 function App() {
@@ -44,7 +47,13 @@ function App() {
         <div className="background-container" style={{ fontFamily: 'sans-serif' }}>
             
             <div className="App">
-                <Welcome />
+                <div className='app-content'>
+                <Router>
+                  <Routes>
+                    <Route path="/" element={<SocialSaver />} />
+                  </Routes>
+                </Router>
+                </div>
             </div>
             <div className="overlay"></div>
             <img
